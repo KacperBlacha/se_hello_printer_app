@@ -18,7 +18,8 @@ jobs:
 
       - run: make deps 
       - run: make lint    
-      - run: make test       
+      - run: make test
+      - run: make docker_build       
 
 workflows: 
 
@@ -26,4 +27,4 @@ workflows:
 
     jobs: 
 
-      - build-and-test 
+      - build-and-test
