@@ -9,8 +9,8 @@ jobs:
     machine: 
 
       image: ubuntu-2004:current 
+      docker_layer_caching: true
 
-        
 
     steps: 
 
@@ -19,7 +19,7 @@ jobs:
       - run: make deps 
       - run: make lint    
       - run: make test
-      - run: docker build -t hello-world-printer .      
+      - run: make docker push     
 
 workflows: 
 

@@ -9,4 +9,11 @@ run:
 test:
 	PYTHONPATH=. py.test --verbose -s
 docker_build:
-	docker build -t hello-world-printer .
+	docker build -t hello-world-printer-k5-2026 .
+
+TAG=$(USERNAME)/hello-world-printer-k5-2026
+docker_push: docker_build
+	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
+	docker tag hello-world-printer-k5-2026 $(TAG); \
+	docker push $(TAG); \
+	docker logout;
